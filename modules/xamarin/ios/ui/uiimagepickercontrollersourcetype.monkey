@@ -1,0 +1,9 @@
+
+Extern
+
+Class UIImagePickerControllerSourceType = "UIImagePickerControllerSourceType"
+	Global Camera:UIImagePickerControllerSourceType
+	Global PhotoLibrary:UIImagePickerControllerSourceType
+	Global SavedPhotosAlbum:UIImagePickerControllerSourceType
+
+End
