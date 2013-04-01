@@ -83,7 +83,6 @@ End
 
 
 Class TableSource Extends UITableViewSource
-	'Field tableItems:String[]
 	Field cellIdentifier:String = "TableCell"
 	
 	Field indexedTableItems:StringMap<ListEx<TableItem>>
@@ -101,16 +100,11 @@ Class TableSource Extends UITableViewSource
 			End
 		End
 		Local keysObj:= indexedTableItems.Keys()
-		Local i:Int = 0
+		Local keysList:= New List<String>
 		For Local k:= Eachin keysObj
-			i += 1 
+			keysList.AddLast(k)
 		End
-		keys = New String[i]
-		i=0
-		For Local k:= Eachin keysObj
-			keys[i] = k
-			i += 1 
-		End
+		keys = keysList.ToArray()
 	End
 	
 	'/// <summary>
@@ -155,7 +149,6 @@ Class TableSource Extends UITableViewSource
 		'//---- If there are no cells To reuse, create a New one
 		If cell = Null
 			cell = UITableViewCellWithStyle.Create(item.cellStyle, cellIdentifier)
-			'cell.Accessory = UITableViewCellAccessory.DetailDisclosureButton
 		End
 		
 		'//---- set the item text
@@ -183,7 +176,7 @@ Class TableSource Extends UITableViewSource
 		If cell = Null
 			cell = UITableViewCellWithStyle.Create(UITableViewCellStyle.Normal, cellIdentifier)
 			cell.Accessory = UITableViewCellAccessory.DetailDisclosureButton
-'			cell = UITableViewCellStyle.Default
+'			cell = UITableViewCellStyle.Normal
 '			cell = cellIdentifier
 		End
 		
